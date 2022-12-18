@@ -6,6 +6,7 @@ local options = {
     conceallevel = 0,
     fileencoding = "utf-8",
     hlsearch = true,
+    incsearch = true,
     ignorecase = true,
     mouse = "a",
     pumheight = 10,
@@ -32,7 +33,7 @@ local options = {
     wrap = false,
     scrolloff = 4,
     sidescrolloff = 4,
-    guifont = "Cascadia Mono:h10",
+    guifont = "Cascadia_Mono:h10",
     --guifont = "monospace:h11",
 }
 

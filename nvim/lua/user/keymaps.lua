@@ -25,6 +25,9 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+
 --keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 -- Resize with arrows
@@ -46,6 +49,8 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- keymap("v", "<", "<gv", opts)
 -- keymap("v", ">", ">gv", opts)
 
+keymap("n", "Q", "<nop>")
+
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
@@ -53,10 +58,11 @@ keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv=gv", opts)
+keymap("x", "K", ":move '<-2<CR>gv=gv", opts)
+keymap("x", "<A-j>", ":move '>+1<CR>gv=gv", opts)
+keymap("x", "<A-k>", ":move '<-2<CR>gv=gv", opts)
+keymap("x", "p", '"_dP', opts)
 
 -- Terminal --
 -- Better terminal navigation
