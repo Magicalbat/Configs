@@ -49,7 +49,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- keymap("v", "<", "<gv", opts)
 -- keymap("v", ">", ">gv", opts)
 
-keymap("n", "Q", "<nop>")
+keymap("n", "Q", "<nop>", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
