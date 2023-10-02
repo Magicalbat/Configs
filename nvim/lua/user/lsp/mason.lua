@@ -1,7 +1,6 @@
 local servers = {
 	"pyright",
     "clangd",
-    "luau_lsp"
 }
 
 local settings = {

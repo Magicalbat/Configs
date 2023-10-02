@@ -48,6 +48,8 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
 
+  use "folke/tokyonight.nvim"
+
   use "windwp/nvim-autopairs"
 
      -- cmp plugins
@@ -57,17 +59,21 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lsp-signature-help"
 
-  -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
-  -- use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
 
-  -- Telescope and it's dependencies
-  use 'nvim-telescope/telescope.nvim'
+  use "mfussenegger/nvim-dap"
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+
+  use {
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
   use {
       'nvim-treesitter/nvim-treesitter',
       run = function()

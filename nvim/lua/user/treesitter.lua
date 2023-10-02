@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 require "nvim-treesitter.install".compilers = { "clang" }
+require 'nvim-treesitter.install'.prefer_git = false
 
 configs.setup {
   ensure_installed = { "c", "cpp", "lua", "python", "html", "javascript", "css" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -19,3 +20,8 @@ configs.setup {
   },
   indent = { enable = true, disable = { "yaml" } },
 }
+
+-- Long story
+-- https://github.com/Magicalbat/Animated-Presentation
+vim.filetype.add({extension = { pres = "pres" }})
+vim.treesitter.language.register("cpp", "pres")

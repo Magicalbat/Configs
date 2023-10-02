@@ -1,4 +1,5 @@
-local colorscheme = "slate"
+--local colorscheme = "slate"
+local colorscheme = "tokyonight-night"
 
 -- evening, slate
 

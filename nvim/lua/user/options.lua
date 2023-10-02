@@ -8,6 +8,7 @@ local options = {
     hlsearch = true,
     incsearch = true,
     ignorecase = true,
+    ro = false,
     mouse = "a",
     pumheight = 10,
     showmode = false,
