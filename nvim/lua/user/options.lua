@@ -42,6 +42,19 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
+-- Create an autocommand group for file-specific settings
+vim.api.nvim_create_augroup("FileTypeSpecific", { clear = true })
+
+-- Set shiftwidth and tabstop to 2 for HTML, CSS, and JavaScript files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "html", "css", "javascript" },
+    callback = function()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+    end,
+    group = "FileTypeSpecific",
+})
+
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 
