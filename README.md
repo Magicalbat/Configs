@@ -22,7 +22,24 @@ Leader key: **`<Space>`**
 | `<leader>p` | Paste without losing register |
 | `<leader>y` / `<leader>Y` | Yank to system clipboard |
 
-### 🔭 Telescope (Fuzzy Finder)
+### � Lazy.nvim Plugin Manager
+
+| Key | Command | Description |
+|-----|---------|-------------|
+| `<leader>ll` | `:Lazy` | Open Lazy menu |
+| `<leader>ls` | `:Lazy sync` | Sync plugins |
+| `<leader>lu` | `:Lazy update` | Update plugins |
+| `<leader>li` | `:Lazy install` | Install plugins |
+| `<leader>lc` | `:Lazy check` | Check plugin health |
+| `<leader>lx` | `:Lazy clean` | Remove unused plugins |
+
+### 🧱 Mason (Package Manager)
+
+| Key | Command | Description |
+|-----|---------|-------------|
+| `<leader>M` | `:Mason` | Open Mason menu |
+
+### �🔭 Telescope (Fuzzy Finder)
 
 | Key | Command | Description |
 |-----|---------|-------------|

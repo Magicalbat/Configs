@@ -48,6 +48,17 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 -- Plugin Keymaps (Global)
 -- ============================================================================
 
+-- Lazy Plugin Manager
+vim.keymap.set("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Open Lazy menu" })
+vim.keymap.set("n", "<leader>ls", "<cmd>Lazy sync<CR>", { desc = "Sync plugins" })
+vim.keymap.set("n", "<leader>lu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
+vim.keymap.set("n", "<leader>li", "<cmd>Lazy install<CR>", { desc = "Install plugins" })
+vim.keymap.set("n", "<leader>lc", "<cmd>Lazy check<CR>", { desc = "Check plugin health" })
+vim.keymap.set("n", "<leader>lx", "<cmd>Lazy clean<CR>", { desc = "Remove unused plugins" })
+
+-- Mason (LSP Package Manager)
+vim.keymap.set("n", "<leader>M", ":Mason<CR>", { desc = "Open Mason command menu" })
+
 -- Bufferline
 vim.keymap.set("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin" })
 vim.keymap.set("n", "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", { desc = "Delete Non-Pinned Buffers" })
