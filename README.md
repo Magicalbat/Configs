@@ -15,14 +15,15 @@ Leader key: **`<Space>`**
 |-----|-------------|
 | `<Esc>` | Clear search highlights |
 | `<C-h/j/k/l>` | Move to window (left/down/up/right) |
-| `<C-Left/Right/Up/Down>` | Resize window |
+| `<C-Left/Right/Up/Down>` | Resize window (hold Ctrl + Arrow keys) |
 | `<C-s>` | Save file |
 | `<leader>q` | Quit all |
 | `U` | Redo |
 | `<leader>p` | Paste without losing register |
 | `<leader>y` / `<leader>Y` | Yank to system clipboard |
+| `J` / `K` (Visual) | Move selected text down/up |
 
-### � Lazy.nvim Plugin Manager
+### 📦 Lazy.nvim Plugin Manager
 
 | Key | Command | Description |
 |-----|---------|-------------|
@@ -39,7 +40,7 @@ Leader key: **`<Space>`**
 |-----|---------|-------------|
 | `<leader>M` | `:Mason` | Open Mason menu |
 
-### �🔭 Telescope (Fuzzy Finder)
+### 🔭 Telescope (Fuzzy Finder)
 
 | Key | Command | Description |
 |-----|---------|-------------|
@@ -67,6 +68,7 @@ Leader key: **`<Space>`**
 | `<S-h>` or `[b` | Navigate to previous buffer |
 | `<S-l>` or `]b` | Navigate to next buffer |
 | `<leader>bp` | Toggle pin current buffer |
+| `<leader>bP` | Delete all non-pinned buffers |
 | `<leader>bP` | Delete all non-pinned buffers |
 | `<leader>bo` | Close all other buffers |
 | `<leader>br` | Close all buffers to the right |
