@@ -1,4 +1,4 @@
--- Bootstrap lazy.nvim
+-- If lazy nvim not already installed then clone it
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -13,24 +13,16 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
+
+-- Set lazy nvim runtime path, where to find it
 vim.opt.rtp:prepend(lazypath)
 
+-- Setup 
 require("lazy").setup({
   spec = {
-    { import = "conf.plugins" },
+    { import = "plugins" },
   },
   install = { colorscheme = { "tokyonight" } },
   checker = { enabled = true },
-  change_detection = { notify = false },
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "gzip",
-        "netrwPlugin",
-        "tarPlugin",
-        "tohtml",
-        "zipPlugin",
-      },
-    },
-  },
 })
+
