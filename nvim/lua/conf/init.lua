@@ -1,4 +1,5 @@
 require "conf.options"
 require "conf.keymap"
-require "conf.lazy_init"
-
+require "conf.plugins"
+require "conf.treesitter"
+require "conf.lsp"

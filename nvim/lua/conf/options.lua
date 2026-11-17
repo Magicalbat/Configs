@@ -34,9 +34,13 @@ local options = {
   wrap = false,
   scrolloff = 4,
   sidescrolloff = 4,
-  --guifont = "Cascadia_Mono:h10",
-  guifont = "JetBrainsMono_Nerd_Font:h11",
+  guifont = "Cascadia_Mono:h10",
+  --guifont = "JetBrainsMono_Nerd_Font:h11",
 }
+
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  options.shell = "powershell.exe"
+end
 
 for k, v in pairs(options) do
     vim.opt[k] = v
