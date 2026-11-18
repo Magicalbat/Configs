@@ -26,6 +26,7 @@ local options = {
   expandtab = true,
   shiftwidth = 4,
   tabstop = 4,
+  softtabstop = 4,
   cursorline = false,
   number = true,
   relativenumber = false,
@@ -34,6 +35,7 @@ local options = {
   wrap = false,
   scrolloff = 4,
   sidescrolloff = 4,
+  cinoptions = "(s,m1",
   guifont = "Cascadia_Mono:h10",
   --guifont = "JetBrainsMono_Nerd_Font:h11",
 }

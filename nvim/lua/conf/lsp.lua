@@ -12,25 +12,12 @@ vim.lsp.config("clangd", {
   },
 })
 
-vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      runtime = { version = "LuaJIT" },
-      workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME } },
-      diagnostics = { globals = { "vim" } },
-      telemetry = { enable = false },
-    },
-  },
-})
-
--- Completion (native, replaces nvim-cmp) ---------------------------------------
--- Swap in your Nerd Font glyphs here (they didn't survive the paste).
 local kind_icons = {
-  Text = "t", Method = "ƒ", Function = "ƒ", Constructor = "⚒", Field = "∙",
-  Variable = "𝑥", Class = "▣", Interface = "◇", Module = "▤", Property = "∙",
-  Unit = "u", Value = "v", Enum = "∈", Keyword = "k", Snippet = "✂",
-  Color = "●", File = "▫", Reference = "→", Folder = "▫", EnumMember = "∈",
-  Constant = "π", Struct = "▣", Event = "⚡", Operator = "±", TypeParameter = "T",
+  Text = "", Method = "m", Function = "", Constructor = "", Field = "",
+  Variable = "", Class = "", Interface = "", Module = "", Property = "",
+  Unit = "", Value = "", Enum = "", Keyword = "", Snippet = "",
+  Color = "", File = "", Reference = "", Folder = "", EnumMember = "",
+  Constant = "", Struct = "", Event = "", Operator = "", TypeParameter = "",
 }
 
 local function convert(item)
@@ -38,7 +25,7 @@ local function convert(item)
   return { kind = kind_icons[kind] or kind }
 end
 
-vim.o.completeitemalign = "kind,abbr,menu" -- icon first, like your cmp setup
+vim.o.completeitemalign = "kind,abbr,menu"
 
 -- Insert-mode popup mappings, same keys as before
 local function pum(key, fallback)
@@ -51,17 +38,6 @@ vim.keymap.set("i", "<C-j>", pum("<C-n>", "<C-j>"), expr)
 vim.keymap.set("i", "<C-k>", pum("<C-p>", "<C-k>"), expr)
 vim.keymap.set("i", "<Tab>", pum("<C-n>", "<Tab>"), expr)
 vim.keymap.set("i", "<S-Tab>", pum("<C-p>", "<S-Tab>"), expr)
--- Confirm only an explicitly selected item (cmp `select = false`)
-vim.keymap.set("i", "<CR>", function()
-  if vim.fn.pumvisible() == 1 and vim.fn.complete_info({ "selected" }).selected ~= -1 then
-    return "<C-y>"
-  end
-  return "<CR>"
-end, expr)
-vim.keymap.set("i", "<C-Space>", function()
-  vim.lsp.completion.get()
-end, { desc = "Trigger completion" })
--- <C-e> already closes the popup natively
 
 -- Per-buffer setup when a server attaches --------------------------------------
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -84,8 +60,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<F2>", vim.lsp.buf.rename, "Rename")
     map("<F4>", vim.lsp.buf.code_action, "Code action")
 
+    local letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
     if client and client:supports_method("textDocument/completion") then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true, convert = convert })
+      local provider = client.server_capabilities.completionProvider
+      if provider then
+        local seen, chars = {}, {}
+        for _, c in ipairs(provider.triggerCharacters or {}) do
+          seen[c] = true
+          table.insert(chars, c)
+        end
+        for c in letters:gmatch(".") do
+          if not seen[c] then table.insert(chars, c) end
+        end
+        provider.triggerCharacters = chars
+
+        vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true, convert = convert })
+      end
     end
   end,
 })
+
+vim.opt.completeopt = { "menu", "menuone", "noselect", "popup" }
